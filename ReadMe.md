@@ -1,6 +1,6 @@
-# Path-based routing in Azure Container Apps
+# Rule-based routing in Azure Container Apps
 
-This repo demonstrates how to use the new path-based routing feature in Azure Container Apps. It consists of three container apps and the bicep files to deploy them.
+This repo demonstrates how to use the new rule-based routing feature in Azure Container Apps. It consists of three container apps and the bicep files to deploy them.
 
 ## Quickstart
 
@@ -13,13 +13,13 @@ This repo demonstrates how to use the new path-based routing feature in Azure Co
 1. Clone the repo
 1. Run `azd up` to get started and follow the prompts to deploy the repo.
 
-### Configure path-based routing
+### Configure rule-based routing
 
-The new-path based routing feature introduces the httpRoutingConfig which informs how traffic is routed in the application. For an example of the httpRoutingConfig, visit [infra/shared/apps-env.bicep](infra/shared/apps-env.bicep) in this repo.
+The new rule-based routing feature introduces the httpRoutingConfig which informs how traffic is routed in the application. For an example of the httpRoutingConfig, visit [infra/shared/apps-env.bicep](infra/shared/apps-env.bicep) in this repo.
 
-To use path-based routing, you will need to be on the 2024-10-02-preview version of the [Azure Container Apps API](https://learn.microsoft.com/rest/api/resource-manager/containerapps/http-route-config?view=rest-resource-manager-containerapps-2024-10-02-preview).
+To use rule-based routing, you will need to be on the 2024-10-02-preview version of the [Azure Container Apps API](https://learn.microsoft.com/rest/api/resource-manager/containerapps/http-route-config?view=rest-resource-manager-containerapps-2024-10-02-preview).
 
-The following is an example of how you can configure path based routing in your ARM/bicep templates.
+The following is an example of how you can configure rule-based routing in your ARM/bicep templates.
 
 ### Example ARM/bicep
 
