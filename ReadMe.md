@@ -82,7 +82,7 @@ The following properties are currently supported.
 
 ### Optional: Provisioning a Managed TLS/SSL Certificate for HTTPS
 
-If you are using a **custom domain** in your `httpRouteConfig` and wish to access it over **HTTPS**, you need to provision a **managed TLS/SSL certificate** in Azure Container Apps. If you have bound your custom domain to the path based routing spec using `auto` bindingType then once the TLS certificate is provisioned successfully, we will automatically be add to the certificate id field in the spec and be bound to your routing config within the managed environment.
+If you are using a **custom domain** in your `httpRouteConfig` and wish to access it over **HTTPS**, you need to provision a **managed TLS/SSL certificate** in Azure Container Apps. If you have bound your custom domain to the routing spec using `auto` bindingType then once the TLS certificate is provisioned successfully, it will automatically be added to the certificate id field in the spec and be bound to your routing config within the managed environment.
  
 #### Steps:
  
