@@ -116,6 +116,19 @@ module app3 './app/app3.bicep' = {
   scope: rg
 }
 
+module httpRoutes './shared/http-routes.bicep' = {
+  name: 'http-routes'
+  params: {
+    containerAppsEnvironmentName: appsEnv.outputs.name
+    location: location
+    tags: tags
+    app1Name: app1.name
+    app2Name: app2.name
+    app3Name: app3.name
+  }
+  scope: rg
+}
+
 output AZURE_CONTAINER_REGISTRY_ENDPOINT string = registry.outputs.loginServer
 output AZURE_KEY_VAULT_NAME string = keyVault.outputs.name
 output AZURE_KEY_VAULT_ENDPOINT string = keyVault.outputs.endpoint
