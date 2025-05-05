@@ -80,6 +80,31 @@ The following properties are currently supported.
 - `prefixRewrite` the URL path to modify the URL prefix path to
 - `targets` takes one target application for which the routes in a rule will be forwaded to. These can only be container app names.
 
+### Optional: Provisioning a Managed TLS/SSL Certificate for HTTPS
+
+If you are using a **custom domain** in your `httpRouteConfig` and wish to access it over **HTTPS**, you need to provision a **managed TLS/SSL certificate** in Azure Container Apps. If you have bound your custom domain to the path based routing spec using `auto` bindingType then once the TLS certificate is provisioned successfully, we will automatically be add to the certificate id field in the spec and be bound to your routing config within the managed environment.
+ 
+#### Steps:
+ 
+1. **Ensure DNS is properly configured**  
+   Your custom domain must have a valid DNS record pointing to your Azure Container App's ingress endpoint (typically a TXT record and a IP address of the Managed Environment). [Add a custom domain and certificate](https://learn.microsoft.com/en-us/azure/container-apps/custom-domains-certificates?tabs=general&pivots=azure-cli#add-a-custom-domain-and-certificate)
+ 
+2. **Add the `managedCertificate` resource to your Bicep template**  
+   Here's an example:
+ 
+   ```bicep
+   resource managedCert 'Microsoft.App/managedEnvironments/managedCertificates@2024-10-02-preview' = {
+     name: '${containerAppsEnvironment.name}/my-cert'
+     location: location
+     properties: {
+       domainControlValidation: {
+         type: 'HTTP'
+       }
+       subjectName: 'your.customdomain.com'
+     }
+   }
+You can add this in the main.bicep file after the httprouteconfig and apps resources have been provisioned. As a extra check you can add a `dependsOn:[app1,app2,app3,httprouteconfig]` check as well
+
 ### What's next?
 - Support for custom domains for the HTTProutingConfig
 - Targeting of apps/revisions
