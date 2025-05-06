@@ -1,3 +1,5 @@
+This sample has moved to https://github.com/microsoft/azure-container-apps/tree/main/templates/bicep/ruleBasedRouting
+
 # Rule-based routing in Azure Container Apps
 
 This repo demonstrates how to use the new rule-based routing feature in Azure Container Apps. It consists of three container apps and the bicep files to deploy them.
